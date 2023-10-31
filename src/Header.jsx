@@ -1,20 +1,11 @@
-import React from "react";
 import { CurrencySelect } from "./CurrencySelect";
+import { LanguageSelect } from "./LanguageSelect";
 
-export const Header = ({
-  currencyName,
-  setCurrencyName,
-  convertedPrice,
-  setConvertedPrice,
-}) => {
+export const Header = () => {
   return (
     <header>
-      <CurrencySelect
-      // currencyName={currencyName}
-      // setCurrencyName={setCurrencyName}
-      // convertedPrice={convertedPrice}
-      // setConvertedPrice={setConvertedPrice}
-      />
+      <LanguageSelect />
+      <CurrencySelect />
     </header>
   );
 };

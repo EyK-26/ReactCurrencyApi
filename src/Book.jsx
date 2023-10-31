@@ -1,26 +1,19 @@
 import { useContext } from "react";
 import { Authors } from "./Authors";
-import CurrencyContext from "./context/CurrencyContext";
+import Context from "./context/Context";
 
-export default function Book({
-  title,
-  price,
-  authors,
-  publication_date,
-  // currencyName,
-  // convertedPrice,
-}) {
-  const { currency, exchangeRate } = useContext(CurrencyContext);
+export const Book = ({ title, price, authors, publication_date }) => {
+  const { contextValue } = useContext(Context);
   return (
     <li>
       <h2>{title}</h2>
       <small>
         original price in EUR {price}
         <br />
-        {(price * exchangeRate).toFixed(2)} {currency}
+        {(price * contextValue.exchangeRate).toFixed(2)} {contextValue.currency}
       </small>
       <Authors authors={authors} />
       <small>{publication_date}</small>
     </li>
   );
-}
+};

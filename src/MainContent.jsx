@@ -1,20 +1,10 @@
 import { BookList } from "./BookList";
 
-export const MainContent = ({
-  // convertedPrice,
-  data,
-  // currencyName,
-  page,
-  setPage,
-}) => {
+export const MainContent = ({ data, page, setPage }) => {
   return (
     <>
       <h1>Latest books</h1>
-      <BookList
-        // convertedPrice={convertedPrice}
-        data={data}
-        // currencyName={currencyName}
-      />
+      <BookList data={data} />
       {page > 1 && (
         <button
           onClick={() => {
