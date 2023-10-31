@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-export const CurrencySelect = () => {
-  const [currency, setCurrency] = useState(
-    localStorage.getItem("currency") || "EUR"
-  );
+export const CurrencySelect = ({
+  currencyName,
+  setCurrencyName,
+  convertedPrice,
+  setConvertedPrice,
+}) => {
   const [currencyList, setCurrencyList] = useState([]);
-  const [exchangeRate, setExchangeRate] = useState(1);
 
   const loadCurrencies = async () => {
     const data = await fetch(
@@ -15,17 +16,17 @@ export const CurrencySelect = () => {
     setCurrencyList(response);
   };
 
-  const loadExchangeRate = async (currency) => {
+  const loadExchangeRate = async (currencyName) => {
     const data = await fetch(
-      `https://classes.codingbootcamp.cz/assets/classes/books-api/exchange-rate.php?currency=${currency}`
+      `https://classes.codingbootcamp.cz/assets/classes/books-api/exchange-rate.php?currency=${currencyName}`
     );
     const response = await data.json();
     console.log(response);
-    setExchangeRate(response.rate);
+    setConvertedPrice(response.rate);
   };
 
   const handleChange = (e) => {
-    setCurrency(e.target.value);
+    setCurrencyName(e.target.value);
   };
 
   useEffect(() => {
@@ -33,17 +34,17 @@ export const CurrencySelect = () => {
   }, []);
 
   useEffect(() => {
-    loadExchangeRate(currency);
-    localStorage.setItem("currency", currency);
-  }, [currency]);
+    loadExchangeRate(currencyName);
+    localStorage.setItem("currency", currencyName);
+  }, [currencyName]);
 
   return (
     <>
-      <p>Current Exchange Rate: {exchangeRate} compared to Eur</p>
+      <p>Current Exchange Rate: {convertedPrice} compared to Eur</p>
       <select
         name="currency"
         id="currency"
-        value={currency}
+        value={currencyName}
         onChange={handleChange}
       >
         {currencyList.map((currency) => (
