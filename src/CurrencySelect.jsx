@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "./context/Context";
 
 export const CurrencySelect = () => {
-  const { contextValue, setContextValue } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const [currencyList, setCurrencyList] = useState([]);
 
   const loadCurrencies = async () => {
@@ -18,11 +18,17 @@ export const CurrencySelect = () => {
       `https://classes.codingbootcamp.cz/assets/classes/books-api/exchange-rate.php?currency=${val}`
     );
     const response = await data.json();
-    setContextValue({ ...contextValue, exchangeRate: response.rate });
+    dispatch({
+      type: "exchangeRate/set",
+      payload: response.rate,
+    });
   };
 
   const handleChange = (e) => {
-    setContextValue({ ...contextValue, currency: e.target.value });
+    dispatch({
+      type: "currency/set",
+      payload: e.target.value,
+    });
   };
 
   useEffect(() => {
@@ -30,17 +36,18 @@ export const CurrencySelect = () => {
   }, []);
 
   useEffect(() => {
-    loadExchangeRate(contextValue.currency);
-    localStorage.setItem("currency", contextValue.currency);
-  }, [contextValue.currency]);
+    loadExchangeRate(state.currency);
+    localStorage.setItem("currency", state.currency);
+    localStorage.setItem("exchangeRate", state.exchangeRate);
+  }, [state.currency, state.exchangeRate]);
 
   return (
     <>
-      <p>Current Exchange Rate: {contextValue.exchangeRate} compared to Eur</p>
+      <p>Current Exchange Rate: {state.exchangeRate} compared to Eur</p>
       <select
         name="currency"
         id="currency"
-        value={contextValue.currency}
+        value={state.currency}
         onChange={handleChange}
       >
         {currencyList.map((currency) => (

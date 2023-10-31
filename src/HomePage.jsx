@@ -1,16 +1,16 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import { Header } from "./Header";
 import { MainContent } from "./MainContent";
 import Context from "./context/Context";
+import reducer from "./store/reducer";
 
 export const HomePage = () => {
-  const [contextValue, setContextValue] = useState({
+  const [contextValue, setContextValue] = useReducer(reducer, {
     user: null,
     theme: "light",
     language: localStorage.getItem("language") || "en",
     currency: localStorage.getItem("currency") || "EUR",
-    exchangeRate: 1,
+    exchangeRate: localStorage.getItem("exchangeRate") || 1,
     authHash: null,
     shoppingCart: [],
   });
@@ -33,7 +33,9 @@ export const HomePage = () => {
   }, [page]);
 
   return (
-    <Context.Provider value={{ contextValue, setContextValue }}>
+    <Context.Provider
+      value={{ state: contextValue, dispatch: setContextValue }}
+    >
       <button
         onClick={() => {
           setIsOpen((prev) => !prev);

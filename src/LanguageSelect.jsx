@@ -1,15 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Context from "./context/Context";
 
 export const LanguageSelect = () => {
-  const { contextValue, setContextValue } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
+
+  useEffect(() => {
+    localStorage.setItem("language", state.language);
+  }, [state.language]);
+
   return (
     <div>
       <span
         onClick={() => {
-          setContextValue({ ...contextValue, language: "en" });
-          localStorage.removeItem("language");
-          localStorage.setItem("language", contextValue.language);
+          dispatch({
+            type: "language/set",
+            payload: "en",
+          });
         }}
       >
         EN
@@ -17,15 +23,16 @@ export const LanguageSelect = () => {
       <br />
       <span
         onClick={() => {
-          setContextValue({ ...contextValue, language: "cz" });
-          localStorage.removeItem("language");
-          localStorage.setItem("language", contextValue.language);
+          dispatch({
+            type: "language/set",
+            payload: "cz",
+          });
         }}
       >
         CZ
       </span>
       <br />
-      Selected Language: {contextValue.language}
+      Selected Language: {state.language}
     </div>
   );
 };
