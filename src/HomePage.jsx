@@ -18,6 +18,7 @@ export const HomePage = () => {
   // );
   // const [convertedPrice, setConvertedPrice] = useState(1);
   const [page, setPage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
 
   const loadData = async () => {
     const response = await fetch(
@@ -36,12 +37,21 @@ export const HomePage = () => {
     <CurrencyContext.Provider
       value={{ currency, setCurrency, exchangeRate, setExchangeRate }}
     >
-      <Header
-      // currencyName={currencyName}
-      // setCurrencyName={setCurrencyName}
-      // convertedPrice={convertedPrice}
-      // setConvertedPrice={setConvertedPrice}
-      />
+      <button
+        onClick={() => {
+          setIsOpen((prev) => !prev);
+        }}
+      >
+        burger
+      </button>
+      {isOpen && (
+        <Header
+        // currencyName={currencyName}
+        // setCurrencyName={setCurrencyName}
+        // convertedPrice={convertedPrice}
+        // setConvertedPrice={setConvertedPrice}
+        />
+      )}
       <MainContent
         // currencyName={currencyName}
         // convertedPrice={convertedPrice}
