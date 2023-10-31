@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-const CurrencyContext = createContext("EUR");
+const CurrencyContext = createContext(null);
 export default CurrencyContext;

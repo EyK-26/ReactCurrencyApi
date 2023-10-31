@@ -4,12 +4,18 @@ import Book from "./Book";
 import { BookList } from "./BookList";
 import { Header } from "./Header";
 import { MainContent } from "./MainContent";
+import CurrencyContext from "./context/CurrencyContext";
+import { useContext } from "react";
 
 export const HomePage = () => {
-  const [data, setData] = useState(null);
-  const [currencyName, setCurrencyName] = useState(
+  const [currency, setCurrency] = useState(
     localStorage.getItem("currency") || "EUR"
   );
+  const [exchangeRate, setExchangeRate] = useState(1);
+  const [data, setData] = useState(null);
+  // const [currencyName, setCurrencyName] = useState(
+  //   // localStorage.getItem("currency") || "EUR"
+  // );
   const [convertedPrice, setConvertedPrice] = useState(1);
   const [page, setPage] = useState(1);
 
@@ -27,20 +33,22 @@ export const HomePage = () => {
   }, [page]);
 
   return (
-    <>
+    <CurrencyContext.Provider
+      value={{ currency, setCurrency, exchangeRate, setExchangeRate }}
+    >
       <Header
-        currencyName={currencyName}
-        setCurrencyName={setCurrencyName}
-        convertedPrice={convertedPrice}
-        setConvertedPrice={setConvertedPrice}
+      // currencyName={currencyName}
+      // setCurrencyName={setCurrencyName}
+      // convertedPrice={convertedPrice}
+      // setConvertedPrice={setConvertedPrice}
       />
       <MainContent
-        currencyName={currencyName}
-        convertedPrice={convertedPrice}
+        // currencyName={currencyName}
+        // convertedPrice={convertedPrice}
         page={page}
         setPage={setPage}
         data={data}
       />
-    </>
+    </CurrencyContext.Provider>
   );
 };

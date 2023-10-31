@@ -10,10 +10,10 @@ export const Header = ({
   return (
     <header>
       <CurrencySelect
-        currencyName={currencyName}
-        setCurrencyName={setCurrencyName}
-        convertedPrice={convertedPrice}
-        setConvertedPrice={setConvertedPrice}
+      // currencyName={currencyName}
+      // setCurrencyName={setCurrencyName}
+      // convertedPrice={convertedPrice}
+      // setConvertedPrice={setConvertedPrice}
       />
     </header>
   );

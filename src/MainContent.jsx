@@ -1,10 +1,9 @@
-import React from "react";
 import { BookList } from "./BookList";
 
 export const MainContent = ({
-  convertedPrice,
+  // convertedPrice,
   data,
-  currencyName,
+  // currencyName,
   page,
   setPage,
 }) => {
@@ -12,9 +11,9 @@ export const MainContent = ({
     <>
       <h1>Latest books</h1>
       <BookList
-        convertedPrice={convertedPrice}
+        // convertedPrice={convertedPrice}
         data={data}
-        currencyName={currencyName}
+        // currencyName={currencyName}
       />
       {page > 1 && (
         <button

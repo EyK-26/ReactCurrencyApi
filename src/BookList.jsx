@@ -1,7 +1,11 @@
 import React from "react";
 import Book from "./Book";
 
-export const BookList = ({ data, currencyName, convertedPrice }) => {
+export const BookList = ({
+  data,
+  // currencyName,
+  // convertedPrice,
+}) => {
   return (
     <ul className="latest-books">
       {data === null ? (
@@ -11,8 +15,8 @@ export const BookList = ({ data, currencyName, convertedPrice }) => {
           <Book
             key={book.id}
             {...book}
-            currencyName={currencyName}
-            convertedPrice={convertedPrice}
+            // currencyName={currencyName}
+            // convertedPrice={convertedPrice}
           />
         ))
       )}
