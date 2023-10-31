@@ -16,7 +16,7 @@ export const HomePage = () => {
   // const [currencyName, setCurrencyName] = useState(
   //   // localStorage.getItem("currency") || "EUR"
   // );
-  const [convertedPrice, setConvertedPrice] = useState(1);
+  // const [convertedPrice, setConvertedPrice] = useState(1);
   const [page, setPage] = useState(1);
 
   const loadData = async () => {
