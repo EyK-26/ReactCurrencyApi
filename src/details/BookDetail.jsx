@@ -19,7 +19,6 @@ export const BookDetail = () => {
     loadData();
   }, [id]);
 
-  console.log(book);
   return (
     <div className="book-detail">
       <h2>Detail of a book</h2>

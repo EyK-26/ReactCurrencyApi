@@ -24,7 +24,7 @@ export default function reducer(state, action) {
       return {
         ...state,
         shoppingCart: state.shoppingCart.filter(
-          (book) => book.book_id !== action.payload
+          (book) => book.id !== action.payload
         ),
       };
   }

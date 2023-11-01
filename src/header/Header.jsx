@@ -1,7 +1,7 @@
 import { CurrencySelect } from "../components/CurrencySelect";
 import { LanguageSelect } from "../components/LanguageSelect";
 import { Navigation } from "../nav/Navigation";
-import { CartOverview } from "../components/CartOverview";
+import { CartOverview } from "../cart/CartOverview";
 
 import { useState } from "react";
 

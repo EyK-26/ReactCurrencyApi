@@ -10,6 +10,7 @@ import { Contact } from "./contact/Contact";
 import { BookDetail } from "./details/BookDetail";
 import { MainContent } from "./components/MainContent";
 import { Layout } from "./Layout/Layout";
+import { Cart } from "./cart/Cart";
 
 function App() {
   const [contextValue, setContextValue] = useReducer(reducer, {
@@ -36,6 +37,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/books" element={<MainContent />} />
               <Route path="/book/:id" element={<BookDetail />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="*" element="page not found" />
             </Route>
           </Routes>

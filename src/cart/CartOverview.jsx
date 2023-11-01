@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import Context from "../context/Context";
+import { Link } from "react-router-dom";
 
 export const CartOverview = () => {
   const { state } = useContext(Context);
   return (
-    <div>
+    <Link to="/cart">
       items in cart:
       {state.shoppingCart.length}
-    </div>
+    </Link>
   );
 };
