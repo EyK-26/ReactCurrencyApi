@@ -18,8 +18,8 @@ export const MainContent = () => {
   }, [page]);
 
   return (
-    <>
-      <h1>Latest books</h1>
+    <div className="booklist">
+      <h2>Latest books</h2>
       <BookList data={data} />
       {page > 1 && (
         <button
@@ -37,6 +37,6 @@ export const MainContent = () => {
       >
         Next
       </button>
-    </>
+    </div>
   );
 };

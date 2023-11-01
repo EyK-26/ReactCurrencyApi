@@ -1,12 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 
-export const SubPageLayout = () => {
+export const Layout = () => {
   return (
     <div className="layout">
-      <Link to="/">Home</Link>
       <div className="layout_content">
         <Outlet />
       </div>
+      <Link to="/">back to home</Link>
     </div>
   );
 };

@@ -11,6 +11,7 @@ export const Header = () => {
   return (
     <div className="header">
       <Navigation />
+      <CartOverview />
       <div className="details">
         <button
           onClick={() => {
@@ -24,7 +25,6 @@ export const Header = () => {
           <header>
             <LanguageSelect />
             <CurrencySelect />
-            <CartOverview />
           </header>
         )}
       </div>

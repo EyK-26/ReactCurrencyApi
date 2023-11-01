@@ -9,7 +9,7 @@ export const LanguageSelect = () => {
   }, [state.language]);
 
   return (
-    <div>
+    <div className="language">
       <span
         onClick={() => {
           dispatch({
@@ -20,7 +20,6 @@ export const LanguageSelect = () => {
       >
         EN
       </span>
-      <br />
       <span
         onClick={() => {
           dispatch({
@@ -31,8 +30,7 @@ export const LanguageSelect = () => {
       >
         CZ
       </span>
-      <br />
-      Selected Language: {state.language}
+      <span> Selected Language: {state.language}</span>
     </div>
   );
 };

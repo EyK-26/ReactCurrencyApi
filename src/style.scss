@@ -25,10 +25,37 @@ ul {
   flex-direction: column;
 }
 
+button {
+  width: 5em;
+}
+
 span {
   cursor: pointer;
+  margin: 0.5em;
 }
 
 a {
   margin: 1em;
+}
+
+.language {
+  display: flex;
+  flex-direction: row;
+}
+
+.booklist_actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  color: black;
+  &.link--highlighted {
+    color: blue;
+  }
+}
+
+.layout {
+  margin-top: 3em;
+  display: flex;
 }

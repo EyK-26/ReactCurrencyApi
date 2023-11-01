@@ -1,8 +1,40 @@
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Context from "../context/Context";
 
 export const BookDetail = () => {
-  const params = useParams();
   const { id } = useParams();
+  const [book, setBook] = useState(null);
+  const { state } = useContext(Context);
 
-  return <h3>Book Details</h3>;
+  const loadData = async () => {
+    const response = await fetch(
+      `https://classes.codingbootcamp.cz/assets/classes/books-api/book.php?id=${id}`
+    );
+    const data = await response.json();
+    setBook(data);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, [id]);
+
+  console.log(book);
+  return (
+    <div className="book-detail">
+      <h2>Detail of a book</h2>
+
+      {book ? (
+        <>
+          <h2>{book.title}</h2>
+          <p>
+            {(book.price * state.exchangeRate).toFixed(2)} {state.currency}
+          </p>
+          <img src={book.image} alt={book.name} />
+        </>
+      ) : (
+        "Loading..."
+      )}
+    </div>
+  );
 };

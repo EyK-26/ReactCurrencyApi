@@ -7,7 +7,9 @@ import Context from "./context/Context";
 import { Routes, Route } from "react-router-dom";
 import { AboutUs } from "./about/AboutUs";
 import { Contact } from "./contact/Contact";
+import { BookDetail } from "./details/BookDetail";
 import { MainContent } from "./components/MainContent";
+import { Layout } from "./Layout/Layout";
 
 function App() {
   const [contextValue, setContextValue] = useReducer(reducer, {
@@ -28,10 +30,14 @@ function App() {
         >
           <Header />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/books" element={<MainContent />} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/books" element={<MainContent />} />
+              <Route path="/book/:id" element={<BookDetail />} />
+              <Route path="*" element="page not found" />
+            </Route>
           </Routes>
         </Context.Provider>
       </BrowserRouter>

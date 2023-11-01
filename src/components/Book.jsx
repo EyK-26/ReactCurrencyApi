@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Authors } from "./Authors";
 import Context from "../context/Context";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 
-export const Book = ({ title, price, authors, publication_date }) => {
+export const Book = ({ id, title, price, authors, publication_date }) => {
   const { state } = useContext(Context);
+  const [isAuthorsOpen, setIsAuthorsOpen] = useState(false);
+
   return (
     <li>
       <h2>{title}</h2>
@@ -12,8 +15,18 @@ export const Book = ({ title, price, authors, publication_date }) => {
         <br />
         {(price * state.exchangeRate).toFixed(2)} {state.currency}
       </small>
-      <Authors authors={authors} />
+      <br />
       <small>{publication_date}</small>
+      <br />
+      <span
+        onClick={() => {
+          setIsAuthorsOpen((prev) => !prev);
+        }}
+      >
+        More on Author(s) {isAuthorsOpen ? "-" : "+"}
+      </span>
+      {isAuthorsOpen && <Authors authors={authors} />}
+      <Link to={"/book/" + id}>More on This Book</Link>
     </li>
   );
 };

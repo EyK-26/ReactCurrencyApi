@@ -6,7 +6,6 @@ export const Authors = ({ authors }) => {
     <div>
       {authors.map((author) => (
         <div key={author.id}>
-          <h3>Author Info</h3>
           <Author {...author} />
         </div>
       ))}
