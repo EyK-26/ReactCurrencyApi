@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { MainContent } from "./MainContent";
 import Context from "./context/Context";
 import reducer from "./store/reducer";
+import { CartOverview } from "./CartOverview";
 
 export const HomePage = () => {
   const [contextValue, setContextValue] = useReducer(reducer, {
@@ -44,6 +45,7 @@ export const HomePage = () => {
         Toggle
       </button>
       {isOpen && <Header />}
+      <CartOverview />
       <MainContent page={page} setPage={setPage} data={data} />
     </Context.Provider>
   );

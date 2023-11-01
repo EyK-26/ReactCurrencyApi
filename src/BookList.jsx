@@ -1,4 +1,5 @@
 import { Book } from "./Book";
+import { Button } from "./Button";
 
 export const BookList = ({ data }) => {
   return (
@@ -6,7 +7,12 @@ export const BookList = ({ data }) => {
       {data === null ? (
         <div className="loading">Loading...</div>
       ) : (
-        data.map((book) => <Book key={book.id} {...book} />)
+        data.map((book) => (
+          <div key={book.id}>
+            <Book {...book} />
+            <Button {...book} />
+          </div>
+        ))
       )}
     </ul>
   );
