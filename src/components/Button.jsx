@@ -1,15 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Context from "../context/Context";
 
-export const Button = (book) => {
+export const Button = (props) => {
+  const { id, title, price, image } = props.book;
+  const isAdded = props.isAdded || null;
   const { dispatch } = useContext(Context);
-  const [inCart, setInCart] = useState(false);
-  const { id, title, price, image } = book;
 
   const handleClick = () => {
-    setInCart((prev) => !prev);
-
-    if (inCart) {
+    if (isAdded) {
       dispatch({
         type: "shoppingCart/remove",
         payload: id,
@@ -24,7 +22,7 @@ export const Button = (book) => {
 
   return (
     <>
-      <button onClick={handleClick}>{inCart ? "Remove" : "Add"}</button>
+      <button onClick={handleClick}>{isAdded ? "Remove" : "Add"}</button>
     </>
   );
 };

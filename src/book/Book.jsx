@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
-import { Authors } from "./Authors";
+import { Authors } from "../Author/Authors";
 import Context from "../context/Context";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Button } from "../components/Button";
 
-export const Book = ({ id, title, price, authors, publication_date }) => {
+export const Book = (props) => {
+  const { id, title, price, authors, publication_date, image } = props.book;
   const { state } = useContext(Context);
   const [isAuthorsOpen, setIsAuthorsOpen] = useState(false);
 
@@ -15,6 +17,8 @@ export const Book = ({ id, title, price, authors, publication_date }) => {
         <br />
         {(price * state.exchangeRate).toFixed(2)} {state.currency}
       </small>
+      <img style={{ width: "15%" }} src={image} alt={title} />
+
       <br />
       <small>{publication_date}</small>
       <br />
@@ -27,6 +31,11 @@ export const Book = ({ id, title, price, authors, publication_date }) => {
       </span>
       {isAuthorsOpen && <Authors authors={authors} />}
       <Link to={"/book/" + id}>More on This Book</Link>
+      <Button
+        book={props.book}
+        isAdded={state.shoppingCart.find((el) => el.id === id)}
+      />
+      <hr />
     </li>
   );
 };

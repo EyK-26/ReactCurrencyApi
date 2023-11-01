@@ -58,4 +58,15 @@ a {
 .layout {
   margin-top: 3em;
   display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 35%;
+  padding: 1em;
+}
+
+.cart-detail {
+  display: flex;
+  flex-direction: column;
 }

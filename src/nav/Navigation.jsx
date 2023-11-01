@@ -9,14 +9,14 @@ export const Navigation = () => {
       <nav>
         <Link
           to="/"
-          className={`link` + (location === "/" ? " link--highlighted" : "")}
+          className={"link" + (location === "/" ? " link--highlighted" : "")}
         >
           Home
         </Link>
         <Link
           to="/about"
           className={
-            `link` + (location === "/about" ? " link--highlighted" : "")
+            "link" + (location === "/about" ? " link--highlighted" : "")
           }
         >
           About us
@@ -24,7 +24,7 @@ export const Navigation = () => {
         <Link
           to="/contact"
           className={
-            `link` + (location === "/contact" ? " link--highlighted" : "")
+            "link" + (location === "/contact" ? " link--highlighted" : "")
           }
         >
           Contact us
@@ -32,7 +32,7 @@ export const Navigation = () => {
         <Link
           to="/books"
           className={
-            `link` + (location === "/books" ? " link--highlighted" : "")
+            "link" + (location === "/books" ? " link--highlighted" : "")
           }
         >
           List of Books

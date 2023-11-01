@@ -29,7 +29,7 @@ export const BookDetail = () => {
           <p>
             {(book.price * state.exchangeRate).toFixed(2)} {state.currency}
           </p>
-          <img src={book.image} alt={book.name} />
+          <img src={book.image} alt={book.title} />
         </>
       ) : (
         "Loading..."

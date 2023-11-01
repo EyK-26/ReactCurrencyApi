@@ -1,4 +1,4 @@
-import { BookList } from "./BookList";
+import { BookList } from "../book/BookList";
 import { useState, useEffect } from "react";
 
 export const MainContent = () => {
