@@ -14,3 +14,21 @@ body {
 ul {
   list-style: none;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  cursor: pointer;
+}
+
+a {
+  margin: 1em;
+}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Authors } from "./Authors";
-import Context from "./context/Context";
+import Context from "../context/Context";
 
 export const Book = ({ title, price, authors, publication_date }) => {
   const { state } = useContext(Context);

@@ -8,9 +8,13 @@ export const BookList = ({ data }) => {
         <div className="loading">Loading...</div>
       ) : (
         data.map((book) => (
-          <div key={book.id}>
+          <div key={book.id} style={{ display: "flex" }}>
             <Book {...book} />
-            <Button {...book} />
+            <Button
+              book_id={book.id}
+              book_title={book.title}
+              book_price={book.price}
+            />
           </div>
         ))
       )}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Context from "./context/Context";
+import Context from "../context/Context";
 
 export const LanguageSelect = () => {
   const { state, dispatch } = useContext(Context);
